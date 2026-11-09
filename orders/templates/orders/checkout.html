@@ -129,6 +129,9 @@
 
         <div class="box">
             <h2>Delivery Details</h2>
+            {% if error %}
+            <p style="background:#fdecea; color:#c0392b; padding:10px; border-radius:5px;">{{ error }}</p>
+            {% endif %}
             <form method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
