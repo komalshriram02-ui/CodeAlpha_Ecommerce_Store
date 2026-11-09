@@ -95,7 +95,19 @@
                 <tr>
                     <td>{{ item.product.name }}</td>
                     <td>₹{{ item.product.price }}</td>
-                    <td>{{ item.quantity }}</td>
+                    <td>
+                        <form method="post" action="{% url 'update_quantity' item.pk %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" name="action" value="decrease"
+                                style="background:#555; padding:4px 10px;">-</button>
+                        </form>
+                        <span style="margin:0 8px;">{{ item.quantity }}</span>
+                        <form method="post" action="{% url 'update_quantity' item.pk %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" name="action" value="increase"
+                                style="background:#555; padding:4px 10px;">+</button>
+                        </form>
+                    </td>
                     <td>₹{{ item.subtotal }}</td>
                     <td>
                         <form method="post" action="{% url 'remove_from_cart' item.pk %}">
