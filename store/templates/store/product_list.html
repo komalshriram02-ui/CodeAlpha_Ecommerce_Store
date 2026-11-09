@@ -52,6 +52,19 @@
 <body>
     <header>
         <h1>My Store</h1>
+        <div>
+            {% if user.is_authenticated %}
+            Hello, {{ user.username }} |
+            <form method="post" action="{% url 'logout' %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit"
+                    style="background:none;border:none;color:white;cursor:pointer;text-decoration:underline;">Logout</button>
+            </form>
+            {% else %}
+            <a href="{% url 'login' %}" style="color:white;">Login</a> |
+            <a href="{% url 'register' %}" style="color:white;">Register</a>
+            {% endif %}
+        </div>
     </header>
     <div class="container">
         <div class="grid">
