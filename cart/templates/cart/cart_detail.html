@@ -107,6 +107,11 @@
                 {% endfor %}
             </table>
             <p class="total">Total: ₹{{ cart.total_price }}</p>
+            <div style="text-align:right; margin-top:15px;">
+                <a href="{% url 'checkout' %}"
+                    style="background:#0a7d2c; color:white; padding:10px 20px; font-size:16px; border-radius:5px; text-decoration:none;">Proceed
+                    to Checkout</a>
+            </div>
             {% else %}
             <p>Your cart is empty.</p>
             {% endif %}

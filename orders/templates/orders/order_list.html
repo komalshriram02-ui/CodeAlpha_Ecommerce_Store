@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders - My Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f5f5f5;
+        }
+
+        header {
+            background: #222;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 15px;
+        }
+
+        .box {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: #222;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1><a href="{% url 'product_list' %}">My Store</a></h1>
+    </header>
+    <div class="container">
+        <a class="back" href="{% url 'product_list' %}">&larr; Continue shopping</a>
+        <div class="box">
+            <h2>My Orders</h2>
+            {% if orders %}
+            <table>
+                <tr>
+                    <th>Order</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+                {% for order in orders %}
+                <tr>
+                    <td>#{{ order.pk }}</td>
+                    <td>{{ order.created_at|date:"d M Y, H:i" }}</td>
+                    <td>₹{{ order.total }}</td>
+                    <td>{{ order.status }}</td>
+                    <td><a href="{% url 'order_detail' order.pk %}">View</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+            <p>Aapne abhi tak koi order place nahi kiya.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+
+</html>
