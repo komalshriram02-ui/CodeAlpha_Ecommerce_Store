@@ -109,6 +109,15 @@
                 {% endfor %}
             </table>
             <p class="total">Total: ₹{{ order.total }}</p>
+            {% if order.status == "Pending" %}
+            <form method="post" action="{% url 'cancel_order' order.pk %}" style="text-align:right; margin-top:15px;"
+                onsubmit="return confirm('Are you sure you want to cancel this order?');">
+                {% csrf_token %}
+                <button type="submit"
+                    style="background:#c0392b; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer;">Cancel
+                    Order</button>
+            </form>
+            {% endif %}
         </div>
     </div>
 </body>

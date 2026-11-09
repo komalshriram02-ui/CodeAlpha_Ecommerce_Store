@@ -71,3 +71,19 @@ def order_list(request):
 def order_detail(request, order_id):
     order = get_object_or_404(Order, pk=order_id, user=request.user)
     return render(request, "orders/order_detail.html", {"order": order})
+
+
+
+
+@login_required
+def cancel_order(request, order_id):
+    order = get_object_or_404(Order, pk=order_id, user=request.user)
+    if request.method == "POST" and order.status == "Pending":
+        with transaction.atomic():
+            for item in order.items.select_related("product"):
+                product = Product.objects.select_for_update().get(pk=item.product_id)
+                product.stock += item.quantity
+                product.save()
+            order.status = "Cancelled"
+            order.save()
+    return redirect("order_detail", order_id=order.pk)    
