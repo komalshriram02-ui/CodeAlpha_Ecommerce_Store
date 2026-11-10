@@ -50,7 +50,7 @@ def checkout(request):
                         product.stock -= item.quantity
                         product.save()
                     cart.items.all().delete()
-                    return redirect("order_detail", order_id=order.pk)
+                    return redirect(f"/orders/{order.pk}/?placed=1")
     else:
         form = CheckoutForm()
 
@@ -70,8 +70,12 @@ def order_list(request):
 @login_required
 def order_detail(request, order_id):
     order = get_object_or_404(Order, pk=order_id, user=request.user)
-    return render(request, "orders/order_detail.html", {"order": order})
-
+    just_placed = bool(request.GET.get("placed"))
+    return render(
+        request,
+        "orders/order_detail.html",
+        {"order": order, "just_placed": just_placed},
+    )
 
 
 

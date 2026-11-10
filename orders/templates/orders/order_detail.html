@@ -80,7 +80,9 @@
     <div class="container">
         <a class="back" href="{% url 'order_list' %}">&larr; Back to my orders</a>
         <div class="box">
+            {% if just_placed %}
             <div class="success">Your order has been placed successfully! Thank you.</div>
+            {% endif %}
             <h2>Order #{{ order.pk }}</h2>
             <p>Date: {{ order.created_at|date:"d M Y, H:i" }}</p>
             <p>Status: {{ order.status }}</p>
