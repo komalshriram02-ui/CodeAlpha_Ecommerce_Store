@@ -26,8 +26,8 @@ A full stack e-commerce web application built with **Django** and **PostgreSQL**
 1. Clone the repository
 
    ```
-   git clone https://github.com/komalshriram02-ui/CodeAlpha_EcommerceStore.git
-   cd CodeAlpha_EcommerceStore
+   git clone https://github.com/komalshriram02-ui/CodeAlpha_Ecommerce_Store.git
+   cd CodeAlpha_Ecommerce_Store
    ```
 
 2. Create and activate a virtual environment
