@@ -2,6 +2,10 @@
 
 A full stack e-commerce web application built with **Django** and **PostgreSQL** as part of the CodeAlpha Full Stack Development internship (Task 1).
 
+**Live Demo:** https://codealpha-ecommerce-store-lmmf.onrender.com/
+
+> Note: This is hosted on a free plan, so the first load may take up to 50 seconds.
+
 ## Features
 
 - User registration, login and logout
@@ -16,10 +20,13 @@ A full stack e-commerce web application built with **Django** and **PostgreSQL**
 
 ## Tech Stack
 
-- **Backend:** Python, Django
-- **Database:** PostgreSQL
-- **Frontend:** HTML, CSS, Django Templates
+## Tech Stack
 
+- **Backend:** Python, Django
+- **Database:** PostgreSQL (Neon)
+- **Image Storage:** Cloudinary
+- **Frontend:** HTML, CSS, Django Templates
+- **Deployment:** Render
 
 ## Setup Instructions
 
